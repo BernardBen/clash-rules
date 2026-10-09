@@ -96,6 +96,7 @@ const SNIFFER = {
 const RULE_PROVIDERS = {
   "category-ads-all": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/category-ads-all.mrs",
     "format": "mrs",
@@ -104,6 +105,7 @@ const RULE_PROVIDERS = {
   },
   "private": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/private.mrs",
     "format": "mrs",
@@ -112,6 +114,7 @@ const RULE_PROVIDERS = {
   },
   "private-ip": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "ipcidr",
     "path": "./ruleset/private-ip.mrs",
     "format": "mrs",
@@ -120,6 +123,7 @@ const RULE_PROVIDERS = {
   },
   "geolocation-cn": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/geolocation-cn.mrs",
     "format": "mrs",
@@ -128,6 +132,7 @@ const RULE_PROVIDERS = {
   },
   "cn-ip": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "ipcidr",
     "path": "./ruleset/cn-ip.mrs",
     "format": "mrs",
@@ -136,6 +141,7 @@ const RULE_PROVIDERS = {
   },
   "geolocation-!cn": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/geolocation-!cn.mrs",
     "format": "mrs",
@@ -144,6 +150,7 @@ const RULE_PROVIDERS = {
   },
   "openai": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/openai.mrs",
     "format": "mrs",
@@ -152,6 +159,7 @@ const RULE_PROVIDERS = {
   },
   "anthropic": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/anthropic.mrs",
     "format": "mrs",
@@ -160,6 +168,7 @@ const RULE_PROVIDERS = {
   },
   "category-ai-chat-!cn": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/category-ai-chat-!cn.mrs",
     "format": "mrs",
@@ -168,6 +177,7 @@ const RULE_PROVIDERS = {
   },
   "youtube": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/youtube.mrs",
     "format": "mrs",
@@ -176,6 +186,7 @@ const RULE_PROVIDERS = {
   },
   "google": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/google.mrs",
     "format": "mrs",
@@ -184,6 +195,7 @@ const RULE_PROVIDERS = {
   },
   "google-ip": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "ipcidr",
     "path": "./ruleset/google-ip.mrs",
     "format": "mrs",
@@ -192,6 +204,7 @@ const RULE_PROVIDERS = {
   },
   "microsoft": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/microsoft.mrs",
     "format": "mrs",
@@ -200,6 +213,7 @@ const RULE_PROVIDERS = {
   },
   "onedrive": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/onedrive.mrs",
     "format": "mrs",
@@ -208,6 +222,7 @@ const RULE_PROVIDERS = {
   },
   "apple": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/apple.mrs",
     "format": "mrs",
@@ -216,6 +231,7 @@ const RULE_PROVIDERS = {
   },
   "icloud": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/icloud.mrs",
     "format": "mrs",
@@ -224,6 +240,7 @@ const RULE_PROVIDERS = {
   },
   "telegram": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/telegram.mrs",
     "format": "mrs",
@@ -232,6 +249,7 @@ const RULE_PROVIDERS = {
   },
   "telegram-ip": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "ipcidr",
     "path": "./ruleset/telegram-ip.mrs",
     "format": "mrs",
@@ -240,6 +258,7 @@ const RULE_PROVIDERS = {
   },
   "github": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/github.mrs",
     "format": "mrs",
@@ -248,6 +267,7 @@ const RULE_PROVIDERS = {
   },
   "gitlab": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/gitlab.mrs",
     "format": "mrs",
@@ -256,6 +276,7 @@ const RULE_PROVIDERS = {
   },
   "atlassian": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/atlassian.mrs",
     "format": "mrs",
@@ -264,6 +285,7 @@ const RULE_PROVIDERS = {
   },
   "cn": {
     "type": "http",
+    "proxy": "底座 · ♻️ 自动最优",
     "behavior": "domain",
     "path": "./ruleset/cn.mrs",
     "format": "mrs",

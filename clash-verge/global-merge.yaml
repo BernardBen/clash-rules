@@ -69,6 +69,7 @@ dns:
 rule-providers:
   category-ads-all:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/category-ads-all.mrs"
     format: mrs
@@ -76,6 +77,7 @@ rule-providers:
     interval: 86400
   private:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/private.mrs"
     format: mrs
@@ -83,6 +85,7 @@ rule-providers:
     interval: 86400
   private-ip:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: ipcidr
     path: "./ruleset/private-ip.mrs"
     format: mrs
@@ -90,6 +93,7 @@ rule-providers:
     interval: 86400
   geolocation-cn:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/geolocation-cn.mrs"
     format: mrs
@@ -97,6 +101,7 @@ rule-providers:
     interval: 86400
   cn-ip:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: ipcidr
     path: "./ruleset/cn-ip.mrs"
     format: mrs
@@ -104,6 +109,7 @@ rule-providers:
     interval: 86400
   geolocation-!cn:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/geolocation-!cn.mrs"
     format: mrs
@@ -111,6 +117,7 @@ rule-providers:
     interval: 86400
   openai:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/openai.mrs"
     format: mrs
@@ -118,6 +125,7 @@ rule-providers:
     interval: 86400
   anthropic:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/anthropic.mrs"
     format: mrs
@@ -125,6 +133,7 @@ rule-providers:
     interval: 86400
   category-ai-chat-!cn:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/category-ai-chat-!cn.mrs"
     format: mrs
@@ -132,6 +141,7 @@ rule-providers:
     interval: 86400
   youtube:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/youtube.mrs"
     format: mrs
@@ -139,6 +149,7 @@ rule-providers:
     interval: 86400
   google:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/google.mrs"
     format: mrs
@@ -146,6 +157,7 @@ rule-providers:
     interval: 86400
   google-ip:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: ipcidr
     path: "./ruleset/google-ip.mrs"
     format: mrs
@@ -153,6 +165,7 @@ rule-providers:
     interval: 86400
   microsoft:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/microsoft.mrs"
     format: mrs
@@ -160,6 +173,7 @@ rule-providers:
     interval: 86400
   onedrive:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/onedrive.mrs"
     format: mrs
@@ -167,6 +181,7 @@ rule-providers:
     interval: 86400
   apple:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/apple.mrs"
     format: mrs
@@ -174,6 +189,7 @@ rule-providers:
     interval: 86400
   icloud:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/icloud.mrs"
     format: mrs
@@ -181,6 +197,7 @@ rule-providers:
     interval: 86400
   telegram:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/telegram.mrs"
     format: mrs
@@ -188,6 +205,7 @@ rule-providers:
     interval: 86400
   telegram-ip:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: ipcidr
     path: "./ruleset/telegram-ip.mrs"
     format: mrs
@@ -195,6 +213,7 @@ rule-providers:
     interval: 86400
   github:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/github.mrs"
     format: mrs
@@ -202,6 +221,7 @@ rule-providers:
     interval: 86400
   gitlab:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/gitlab.mrs"
     format: mrs
@@ -209,6 +229,7 @@ rule-providers:
     interval: 86400
   atlassian:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/atlassian.mrs"
     format: mrs
@@ -216,6 +237,7 @@ rule-providers:
     interval: 86400
   cn:
     type: http
+    proxy: "底座 · ♻️ 自动最优"
     behavior: domain
     path: "./ruleset/cn.mrs"
     format: mrs
