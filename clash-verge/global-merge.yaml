@@ -247,7 +247,7 @@ proxy-groups:
 - name: 底座 · ♻️ 自动最优
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   url: https://www.gstatic.com/generate_204
   interval: 600
   tolerance: 50
@@ -265,7 +265,7 @@ proxy-groups:
 - name: "地区 · \U0001F1FA\U0001F1F8 美国节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   filter: "(美国|US|USA|United States|洛杉矶|纽约)"
   url: https://www.gstatic.com/generate_204
   interval: 600
@@ -273,7 +273,7 @@ proxy-groups:
 - name: "地区 · \U0001F1ED\U0001F1F0 香港节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   filter: "(香港|HK|Hong Kong)"
   url: https://www.gstatic.com/generate_204
   interval: 600
@@ -281,7 +281,7 @@ proxy-groups:
 - name: "地区 · \U0001F1EF\U0001F1F5 日本节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   filter: "(日本|JP|Japan)"
   url: https://www.gstatic.com/generate_204
   interval: 600
@@ -289,7 +289,7 @@ proxy-groups:
 - name: "地区 · \U0001F1F8\U0001F1EC 新加坡节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   filter: "(新加坡|SG|Singapore)"
   url: https://www.gstatic.com/generate_204
   interval: 600
@@ -297,7 +297,7 @@ proxy-groups:
 - name: "地区 · \U0001F1F9\U0001F1FC 台湾节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   filter: "(台湾|TW|Taiwan)"
   url: https://www.gstatic.com/generate_204
   interval: 600
@@ -305,7 +305,7 @@ proxy-groups:
 - name: "地区 · \U0001F30D 全部节点"
   type: url-test
   include-all-proxies: true
-  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效"
+  exclude-filter: "(?i)官网|剩余|到期|套餐|流量|重置|无法连接|请切换|海外用户专用|纯ipv6|ipv6|备用|较慢|测试|test|维护|故障|失效|避免晚高峰|晚高峰"
   url: https://www.gstatic.com/generate_204
   interval: 600
   tolerance: 50
