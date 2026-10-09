@@ -7,14 +7,14 @@ clash-rules 生成器
   2. shadowrocket/shadowrocket.conf  Shadowrocket 配置
 
 用法:
-  python3 scripts/generate.py
+  python3 scripts/generate.py                      # 生成占位符版本
+  python3 scripts/generate.py --sub <订阅链接>     # 额外生成已填好链接的本地版小火箭配置
 
 依赖: pyyaml
 """
+import argparse
 import json
 import os
-import re
-import sys
 
 import yaml
 
@@ -242,6 +242,13 @@ ipv6 = false
 # 主流程
 # ---------------------------------------------------------------------------
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="从 clash-verge/global-merge.yaml 生成 FlClash 覆写脚本和小火箭配置")
+    parser.add_argument(
+        "--sub", metavar="URL",
+        help="你的订阅链接: 额外生成已填好链接的 shadowrocket/shadowrocket.local.conf (被 .gitignore 忽略, 不入库)")
+    args = parser.parse_args()
+
     js = build_override_js()
     with open(FLCLASH_OUT, "w", encoding="utf-8") as f:
         f.write(js)
@@ -253,6 +260,12 @@ if __name__ == "__main__":
     print("✅ 生成 %s (%d bytes, %d 组, %d 条规则)" % (
         SR_OUT, len(conf.encode("utf-8")), len(groups), len(rules)))
 
+    if args.sub:
+        local_path = os.path.join(ROOT, "shadowrocket", "shadowrocket.local.conf")
+        with open(local_path, "w", encoding="utf-8") as f:
+            f.write(conf.replace(SUB_PLACEHOLDER, args.sub))
+        print("✅ 生成 %s (订阅链接已自动填入, 不会提交到仓库)" % local_path)
+        print("   小火箭导入这个 local 文件即可, 规则更新后重新运行本命令再导入一次")
     print("\n--- 规则集 -> DOMAIN-SET 映射 (%d 个) ---" % len(report["provider_mapping"]))
     for n in report["provider_mapping"]:
         print("   ", n)

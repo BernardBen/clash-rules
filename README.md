@@ -11,8 +11,12 @@ clash-rules/
 ├── clash-verge/global-merge.yaml   # 规则唯一源：Clash Verge 全局扩展配置(Merge)
 ├── flclash/override.js             # 生成物：FlClash 覆写脚本
 ├── shadowrocket/shadowrocket.conf  # 生成物：小火箭配置(含订阅占位符)
-└── scripts/generate.py             # 从 global-merge.yaml 生成上面两个文件
+├── scripts/generate.py             # 从 global-merge.yaml 生成上面两个文件
+└── .gitignore                      # 忽略本地生成的 shadowrocket.local.conf
 ```
+
+**订阅完全由各 App 自己管理**（Verge/FlClash 在订阅页，小火箭在订阅列表），
+规则文件本身不含任何订阅链接；只有小火箭例外，见下方说明。
 
 **规则内容**：22 个 MetaCubeX 在线规则集 + 44 类 GEOSITE 分流 + 24 个代理组
 （底座/地区/场景/大厂/系统 五层结构），205 条规则。
@@ -36,10 +40,26 @@ clash-rules/
 
 ### Shadowrocket — iOS
 
-1. 下载 `shadowrocket/shadowrocket.conf`
-2. 把文件里 9 处 `https://YOUR_SUBSCRIPTION_URL` 全部替换为你的订阅链接（支持 Clash 格式）
-3. 小火箭 → 配置 → + → 从文件导入
-4. 规则更新后：重新下载本文件、替换订阅链接后再次导入
+> 小火箭没有 Verge「Merge」/FlClash「覆写」那种把规则套在订阅上的机制，
+> 配置文件里的策略组必须通过 `policy-path` 指向订阅才能列出节点，
+> 所以它是三端中唯一需要订阅链接出现在配置文件里的一端。
+> 用下面的方式把这件事变成「一条命令」而不是「手改 9 处」。
+
+1. 在电脑上克隆本仓库，运行：
+   ```bash
+   python3 scripts/generate.py --sub "你的订阅链接"
+   ```
+   会生成 `shadowrocket/shadowrocket.local.conf`（订阅链接已自动填入，
+   该文件被 .gitignore 忽略，永远不会提交到仓库）
+2. 把 `shadowrocket.local.conf` 通过 iCloud/隔空投送/文件 App 传到 iPhone，
+   小火箭 → 配置 → + → 从文件导入
+3. 规则更新后：`git pull` → 重新运行上面那条命令 → 把新文件再导入一次
+
+<details><summary>不想用电脑生成？手动方式</summary>
+
+下载 `shadowrocket/shadowrocket.conf`，把里面 9 处 `https://YOUR_SUBSCRIPTION_URL`
+全局替换为你的订阅链接，再导入小火箭。规则更新时重复此过程。
+</details>
 
 ## 规则更新工作流（改一处，三端同步）
 
@@ -47,13 +67,16 @@ clash-rules/
 2. 运行生成器（需要 Python3 + pyyaml）：
    ```bash
    pip3 install pyyaml   # 首次
-   python3 scripts/generate.py
+   python3 scripts/generate.py                       # 生成 override.js + shadowrocket.conf
+   python3 scripts/generate.py --sub "你的订阅链接"   # 小火箭本地版（可选）
    ```
 3. 提交并推送：
    ```bash
    git add -A && git commit -m "更新规则" && git push
    ```
-4. 各端按上面「接入方法」中的更新步骤拉取最新内容
+4. 各端按上面「接入方法」中的更新步骤拉取最新内容：
+   - Verge / FlClash：粘贴新文件内容即可（订阅不受影响，什么都不用改）
+   - 小火箭：重新生成 local.conf 并导入
 
 ## 发布到 GitHub（首次）
 
