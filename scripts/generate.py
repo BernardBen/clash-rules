@@ -104,8 +104,13 @@ IP_PROVIDER_REASON = {
 # (merge 中 provider 名与 geosite 目录名一致的直接映射)
 
 
+# 小火箭规则集源: jsDelivr CDN(墙内直连可达, raw.githubusercontent 会被污染导致 TLS 失败)
+# 注意 jsDelivr 有约 12 小时缓存, 规则列表更新最多滞后半天
+SR_META = "https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo"
+
+
 def geosite_list_url(name):
-    return "%s/geosite/%s.list" % (META, name)
+    return "%s/geosite/%s.list" % (SR_META, name)
 
 
 def sr_regex_from_exclude(exclude):

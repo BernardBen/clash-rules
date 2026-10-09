@@ -42,9 +42,14 @@ clash-rules/
 ### Shadowrocket — iOS（raw 链接方式，推荐）
 
 1. 订阅在小火箭里照常添加（首页 → + → 添加订阅），规则文件不需要碰订阅链接
-2. 仓库推到 GitHub 后，小火箭 → 配置 → + → 添加 raw 链接：
+2. 仓库推到 GitHub 后，小火箭 → 配置 → + → 添加链接。
+   **墙内直连用 jsDelivr（推荐，配置内 50 个规则集也已切换到 jsDelivr）：**
    ```
-   https://raw.githubusercontent.com/<用户名>/clash-rules/main/shadowrocket/rules.conf
+   https://fastly.jsdelivr.net/gh/BernardBen/clash-rules@main/shadowrocket/rules.conf
+   ```
+   设备已有可用代理时也可用 GitHub raw：
+   ```
+   https://raw.githubusercontent.com/BernardBen/clash-rules/main/shadowrocket/rules.conf
    ```
 3. 首次适配：`rules.conf` 前 9 个策略组（底座/地区层）引用的是**订阅自带分组名**，
    当前预填为「赔钱小号」的分组（♻️自动选择 / 🚀节点选择 / 🇺🇸美国节点 / 🇯🇵日本节点 / 🇸🇬狮城节点）。
