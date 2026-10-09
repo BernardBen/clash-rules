@@ -10,13 +10,14 @@
 clash-rules/
 ├── clash-verge/global-merge.yaml   # 规则唯一源：Clash Verge 全局扩展配置(Merge)
 ├── flclash/override.js             # 生成物：FlClash 覆写脚本
-├── shadowrocket/shadowrocket.conf  # 生成物：小火箭配置(含订阅占位符)
-├── scripts/generate.py             # 从 global-merge.yaml 生成上面两个文件
+├── shadowrocket/rules.conf         # 生成物：小火箭配置(订阅引用版, 推荐 raw 链接添加)
+├── shadowrocket/shadowrocket.conf  # 生成物：小火箭配置(policy-path 占位符版, 兜底用)
+├── scripts/generate.py             # 从 global-merge.yaml 生成上面三个文件
 └── .gitignore                      # 忽略本地生成的 shadowrocket.local.conf
 ```
 
-**订阅完全由各 App 自己管理**（Verge/FlClash 在订阅页，小火箭在订阅列表），
-规则文件本身不含任何订阅链接；只有小火箭例外，见下方说明。
+**订阅完全由各 App 自己管理**（Verge/FlClash 在订阅页，小火箭在首页订阅列表），
+三个规则文件本身都不含任何订阅链接。
 
 **规则内容**：22 个 MetaCubeX 在线规则集 + 44 类 GEOSITE 分流 + 24 个代理组
 （底座/地区/场景/大厂/系统 五层结构），205 条规则。
@@ -38,27 +39,26 @@ clash-rules/
 > 注意：FlClash 界面里的 TUN / 端口 / DNS 开关由 App 自己接管，
 > 脚本里保留的 dns/sniffer 配置若与 GUI 设置冲突，以 GUI 为准排查。
 
-### Shadowrocket — iOS
+### Shadowrocket — iOS（raw 链接方式，推荐）
 
-> 小火箭没有 Verge「Merge」/FlClash「覆写」那种把规则套在订阅上的机制，
-> 配置文件里的策略组必须通过 `policy-path` 指向订阅才能列出节点，
-> 所以它是三端中唯一需要订阅链接出现在配置文件里的一端。
-> 用下面的方式把这件事变成「一条命令」而不是「手改 9 处」。
-
-1. 在电脑上克隆本仓库，运行：
-   ```bash
-   python3 scripts/generate.py --sub "你的订阅链接"
+1. 订阅在小火箭里照常添加（首页 → + → 添加订阅），规则文件不需要碰订阅链接
+2. 仓库推到 GitHub 后，小火箭 → 配置 → + → 添加 raw 链接：
    ```
-   会生成 `shadowrocket/shadowrocket.local.conf`（订阅链接已自动填入，
-   该文件被 .gitignore 忽略，永远不会提交到仓库）
-2. 把 `shadowrocket.local.conf` 通过 iCloud/隔空投送/文件 App 传到 iPhone，
-   小火箭 → 配置 → + → 从文件导入
-3. 规则更新后：`git pull` → 重新运行上面那条命令 → 把新文件再导入一次
+   https://raw.githubusercontent.com/<用户名>/clash-rules/main/shadowrocket/rules.conf
+   ```
+3. 首次适配：`rules.conf` 前 9 个策略组（底座/地区层）引用的是**订阅自带分组名**，
+   当前预填为「赔钱小号」的分组（♻️自动选择 / 🚀节点选择 / 🇺🇸美国节点 / 🇯🇵日本节点 / 🇸🇬狮城节点）。
+   换了订阅或分组名对不上时，在小火箭配置编辑器里改这 9 行即可，规则部分不用动
+4. 规则更新后：小火箭配置页对该配置重新下载即可
 
-<details><summary>不想用电脑生成？手动方式</summary>
+> 该订阅没有香港/台湾分组，地区 · 🇭🇰/🇹🇼 组暂兜底为「自动最优」，订阅有这两个地区组时可自行加上。
 
-下载 `shadowrocket/shadowrocket.conf`，把里面 9 处 `https://YOUR_SUBSCRIPTION_URL`
-全局替换为你的订阅链接，再导入小火箭。规则更新时重复此过程。
+<details><summary>兜底：老版本小火箭不解析订阅分组名时</summary>
+
+若添加 raw 配置后小火箭提示策略不存在（个别旧版本不把订阅分组当可选策略），
+在电脑上运行 `python3 scripts/generate.py --sub "你的订阅链接"`，
+生成 `shadowrocket.local.conf`（订阅链接已自动填入、被 .gitignore 忽略不入库），
+通过 iCloud/隔空投送传到 iPhone 后从文件导入。
 </details>
 
 ## 规则更新工作流（改一处，三端同步）
@@ -67,16 +67,15 @@ clash-rules/
 2. 运行生成器（需要 Python3 + pyyaml）：
    ```bash
    pip3 install pyyaml   # 首次
-   python3 scripts/generate.py                       # 生成 override.js + shadowrocket.conf
-   python3 scripts/generate.py --sub "你的订阅链接"   # 小火箭本地版（可选）
+   python3 scripts/generate.py    # 生成 override.js + shadowrocket.conf + rules.conf
    ```
 3. 提交并推送：
    ```bash
    git add -A && git commit -m "更新规则" && git push
    ```
-4. 各端按上面「接入方法」中的更新步骤拉取最新内容：
+4. 各端更新：
    - Verge / FlClash：粘贴新文件内容即可（订阅不受影响，什么都不用改）
-   - 小火箭：重新生成 local.conf 并导入
+   - 小火箭：配置页重新下载 raw 配置（订阅不受影响；若换过订阅记得核对前 9 个适配组）
 
 ## 发布到 GitHub（首次）
 
@@ -120,4 +119,5 @@ git push -u origin main
 
 - `global-merge.yaml`：已用 mihomo 内核 `-t` 完整校验（205 规则 / 24 组，GEOSITE+GEOIP+RULE-SET 全部加载成功）
 - `override.js`：Node.js 语法检查 + `main()` 功能冒烟测试通过
-- `shadowrocket.conf`：24 组 / 187 条规则，策略交叉引用检查无悬空引用；50 个 DOMAIN-SET 远程 URL 全部 200 可达
+- `shadowrocket.conf` / `rules.conf`：24 组 / 187 条规则，策略交叉引用检查无悬空引用；50 个 DOMAIN-SET 远程 URL 全部 200 可达；`rules.conf` 前 9 个适配组引用的订阅分组名取自「赔钱小号」订阅的真实分组（已核对该订阅确实提供这些分组）
+- 小火箭端唯一无法本机验证的是 iOS App 的解析行为（无 iOS 测试环境）：若 raw 配置载入报"策略不存在"，按 README 兜底方案处理
