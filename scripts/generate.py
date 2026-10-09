@@ -223,9 +223,18 @@ def build_sr_conf():
 # ============================================================
 
 [General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.gov.cn, *.sgcc.com.cn, *.95598.cn, *.csg.cn, *.stategrid.com.cn, *.esgcc.com.cn
+tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
 dns-server = 223.5.5.5, 119.29.29.29, https://dns.alidns.com/dns-query, https://doh.pub/dns-query
 fallback-dns-server = https://dns.cloudflare.com/dns-query, https://dns.google/dns-query
+always-real-ip = *.gov.cn, *.sgcc.com.cn, *.95598.cn, *.csg.cn, *.stategrid.com.cn, *.esgcc.com.cn
 ipv6 = false
+prefer-ipv6 = false
+dns-direct-system = true
+icmp-auto-reply = true
+private-ip-answer = true
+udp-policy-not-supported-behaviour = REJECT
 """)
     group_lines = build_sr_groups()
     rule_lines = build_sr_rules()
@@ -235,6 +244,12 @@ ipv6 = false
     out.append("[Rule]")
     out.extend(rule_lines)
     out.append("")
+    out.append("[Host]")
+    out.append("localhost = 127.0.0.1")
+    out.append("")
+    out.append("[URL Rewrite]")
+    out.append(r"^https?://(www.)?g.cn($|/.*) https://www.google.com$2 302")
+    out.append(r"^https?://(www.)?google.cn($|/.*) https://www.google.com$2 302")
     return "\n".join(out)
 
 
@@ -301,9 +316,18 @@ def build_sr_rules_conf():
 # ============================================================
 
 [General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local, captive.apple.com, *.gov.cn, *.sgcc.com.cn, *.95598.cn, *.csg.cn, *.stategrid.com.cn, *.esgcc.com.cn
+tun-excluded-routes = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.0.0.0/24, 192.0.2.0/24, 192.88.99.0/24, 192.168.0.0/16, 198.51.100.0/24, 203.0.113.0/24, 224.0.0.0/4, 255.255.255.255/32, 239.255.255.250/32
 dns-server = 223.5.5.5, 119.29.29.29, https://dns.alidns.com/dns-query, https://doh.pub/dns-query
 fallback-dns-server = https://dns.cloudflare.com/dns-query, https://dns.google/dns-query
+always-real-ip = *.gov.cn, *.sgcc.com.cn, *.95598.cn, *.csg.cn, *.stategrid.com.cn, *.esgcc.com.cn
 ipv6 = false
+prefer-ipv6 = false
+dns-direct-system = true
+icmp-auto-reply = true
+private-ip-answer = true
+udp-policy-not-supported-behaviour = REJECT
 """ % sub_names)
     out.append("[Proxy Group]")
     out.extend(group_lines)
@@ -311,6 +335,12 @@ ipv6 = false
     out.append("[Rule]")
     out.extend(rule_lines)
     out.append("")
+    out.append("[Host]")
+    out.append("localhost = 127.0.0.1")
+    out.append("")
+    out.append("[URL Rewrite]")
+    out.append(r"^https?://(www.)?g.cn($|/.*) https://www.google.com$2 302")
+    out.append(r"^https?://(www.)?google.cn($|/.*) https://www.google.com$2 302")
     return "\n".join(out)
 
 
